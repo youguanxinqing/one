@@ -1,0 +1,21 @@
+args_from_2th_index() {
+    local first=1
+    local agrs=""
+    for arg in $@; do
+        if [ $first -eq 1 ]; then
+            local first=0
+        else
+            local args+=" $arg"
+        fi
+    done
+    echo $args
+}
+
+file_name=$1
+args=$(args_from_2th_index $@)
+
+program_name=${file_name%%.cpp}
+
+echo "cmd:" "g++ $file_name -o $program_name$agrs -std=c++14"
+g++ $file_name -o $program_name $args -std=c++14 && ./$program_name 
+
