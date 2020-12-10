@@ -1,3 +1,8 @@
+
+# ##
+# 参数提取
+# eg: args=(1 2 3 4) -> args=(2 3 4)
+# ##
 args_from_2th_index() {
     local first=1
     local agrs=""
@@ -10,13 +15,3 @@ args_from_2th_index() {
     done
     echo $args
 }
-
-file_name=$1
-args=$(args_from_2th_index $@)
-
-program_name=${file_name%%.cpp}
-
-echo "cmd:" "g++ $file_name -o $program_name$agrs -std=c++14"
-echo ""
-g++ $file_name -o $program_name $args -std=c++14 && ./$program_name 
-
