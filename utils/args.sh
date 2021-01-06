@@ -5,12 +5,12 @@
 # ##
 args_from_2th_index() {
     local first=1
-    local agrs=""
+    local args=""
     for arg in $@; do
         if [ $first -eq 1 ]; then
-            local first=0
+            first=0
         else
-            local args+=" $arg"
+            args="$args $arg"
         fi
     done
     echo $args
